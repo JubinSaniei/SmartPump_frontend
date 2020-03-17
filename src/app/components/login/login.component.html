@@ -1,0 +1,123 @@
+<ngb-toast id="toast" *ngIf="toastShow" header="Congradulation. Your successfully registered" [autohide]="false"
+  (click)="toastShow=false">
+  Please check your email and confirm your email address.
+</ngb-toast>
+
+<div class="container-fluid div-center">
+  <section *ngIf="!register">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 pl-0 pr-0">
+        <div class="card div-height shadow-sm " style="width: 400px ">
+          <div class="card-body">
+            <div class="mb-5 text-center">
+              <img class="img-fluid img-size" src="../../../assets/images/logo.png" alt="login_image">
+
+            </div>
+            <form (ngSubmit)="onLogin()">
+              <div class="mt-2">
+                <label for="">USER NAME</label>
+                <input class="form-control form-control-md" type="text" name="userName" [(ngModel)]="loginFrm.userName">
+              </div>
+              <div class="mt-2">
+                <label for="">PASSWORD</label>
+                <input class="form-control form-control-md" type="password" name="password" [(ngModel)]="loginFrm.password">
+              </div>
+
+              <div>
+                <!-- popOver Error Messave -->
+                <ng-template #popContent><i class="mdi mdi-information-outline pr-2 font-xl"></i> {{errorMsg}}!
+                </ng-template>
+                <ng-template #popTitle><b class="text-info">Somthing is Wrong</b></ng-template>
+                <span class="d-flex justify-content-center" #errorMessage placement="top" [ngbPopover]="popContent"
+                  [popoverTitle]="popTitle"></span>
+                <!-- -------------------- -->
+              </div>
+
+              <div class="mt-4  d-flex justify-content-center">
+                <button type=" submit" class="btn btn-info">LOGIN</button>
+              </div>
+            </form>
+
+            <div class="register font-xs text-muted">
+              <span>Don't have an account with us?</span>
+              <span (click)="register=true">Register</span>
+            </div>
+          </div>
+        </div>
+        <div class="pl-1 mt-3 d-flex justify-content-center" style="width: 400px;">
+          <span class="font-xs text-secondary ml-2">Copyright 2020 <a href="http://jubinsaniei.com" target="_blank">Jubin Saniei</a> All
+            Rights Reserved </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="register">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 pl-0 pr-0">
+        <div class="card div-height shadow-sm " style="width: 400px ">
+          <div class="card-body">
+            <div class="mb-5 text-center">
+              <img class="img-fluid img-size" src="../../../assets/images/logo.png" alt="login_image">
+
+            </div>
+            <form (ngSubmit)="onRegister()" #frmRegister="ngForm">
+              <div class="mt-2">
+                <label for="">User Name<span class="ml-2 font-xs text-danger"
+                    *ngIf="!userName.valid && userName.touched">required</span></label>
+                <input class="form-control form-control-sm" type="email" name="email" placeholder="Enter your email address"
+                  [(ngModel)]="registerModel.email" required #userName="ngModel">
+
+
+              </div>
+              <div class="mt-2">
+                <label for="">Password<span class="ml-2 font-xs text-danger"
+                    *ngIf="!password.valid && password.touched">required</span></label>
+                <input class="form-control form-control-sm" type="password" name="password" placeholder="Enter your password"
+                  [(ngModel)]="registerModel.password" required #password="ngModel">
+              </div>
+              <div class="mt-2">
+                <label for="">Re-type Password<span class="ml-2 font-xs text-danger"
+                    *ngIf="!rePass.valid && rePass.touched">required</span></label>
+                <input class="form-control form-control-sm" type="password" name="rePassword" placeholder="Retype your password"
+                  [(ngModel)]="registerModel.rePassword" required #rePass="ngModel">
+              </div>
+              <div class="mt-2">
+                <label for="">First Name<span class="ml-2 font-xs text-danger" *ngIf="!fName.valid && fName.touched">required</span></label>
+                <input class="form-control form-control-sm" type="text" name="firstName" placeholder="Enter your First Name"
+                  [(ngModel)]="registerModel.firstName" required #fName="ngModel">
+              </div>
+              <div class="mt-2">
+                <label for="">Last Name<span class="ml-2 font-xs text-danger"
+                    *ngIf="!lastName.valid && lastName.touched">required</span></label>
+                <input class="form-control form-control-sm" type="text" name="lastName" placeholder="Enter your Last Name"
+                  [(ngModel)]="registerModel.lastName" required #lastName="ngModel">
+              </div>
+
+              <div>
+                <!-- popOver Error Messave -->
+                <ng-template #popContent><i class="mdi mdi-information-outline pr-2 font-xl"></i> {{errorMsg}}!
+                </ng-template>
+                <ng-template #popTitle><b class="text-info">Somthing is Wrong</b></ng-template>
+                <span class="d-flex justify-content-center" #errorMessage placement="top" [ngbPopover]="popContent"
+                  [popoverTitle]="popTitle"></span>
+                <!-- -------------------- -->
+              </div>
+
+              <div class="mt-4  d-flex justify-content-center">
+                <button type=" submit" class="btn btn-info" [disabled]="!frmRegister.valid">REGISTER</button>
+              </div>
+            </form>
+            <div class="backSpace">
+              <span (click)="register=false">Login Page</span>
+            </div>
+          </div>
+        </div>
+        <div class="pl-1 mt-3 d-flex justify-content-center" style="width: 400px;">
+          <span class="font-xs text-secondary ml-2">Copyright 2020 <a href="http://jubinsaniei.com" target="_blank">Jubin Saniei</a> All
+            Rights Reserved </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

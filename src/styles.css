@@ -1,0 +1,180 @@
+body {
+    
+    background-color: #ffffff;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #666666;
+  }
+  
+  .cursor {
+    cursor: pointer;
+  }
+  
+  .font-xs {
+    font-size: 12px;
+  }
+  
+  .font-sm {
+    font-size: 14px;
+  }
+  
+  .font-med {
+    font-size: 16px;
+  }
+  
+  .font-lg {
+    font-size: 18px;
+  }
+  
+  .font-xl {
+    font-size: 20px;
+  }
+  
+  .br1 {
+    border-style: solid;
+    border-color: red;
+  }
+  
+  .br2 {
+    border-style: solid;
+    border-color: green;
+  }
+  
+  .br3 {
+    border-style: solid;
+    border-color: blue;
+  }
+  
+  .br-grey {
+    border-style: solid;
+    border-color: #929292;
+  }
+  .bg-white {
+    background-color: #fff;
+  }
+  
+  .bg-nav {
+    background-color: #343a40;
+  }
+  
+  .bg-table {
+    background-color: #212529;
+  }
+  
+  .bg-green {
+    background-color: #1BC98E;
+  }
+  
+  .bg-grassgreen {
+    background-color: #3e9663;
+  }
+  
+  .bg-blue {
+    background-color: #1b98c9;
+  }
+  
+  .bg-orange {
+    background-color: #c9921b;
+  }
+  
+  .bg-red {
+    background-color: #c9211b;
+  }
+  
+  .bg-grey {
+    background-color: #929292;
+  }
+  
+  .bg-lighter {
+    background-color: #f3f2f2;
+  }
+  .top50 {
+    margin-top: 50px;
+  }
+  .top25{
+    margin-top: 25px;
+  }
+  .top75{
+    margin-top: 75px;
+  }
+  .top100{
+    margin-top: 100px;
+  }
+  .top50 {
+    margin-bottom: 50px;
+  }
+  .bottom25{
+    margin-bottom: 25px;
+  }
+  .bottom75{
+    margin-bottom: 75px;
+  }
+  .bottom100{
+    margin-bottom: 100px;
+  }
+  .thText{
+  font-size: 15px;
+  }
+  
+  .font-title{
+    font-family: 'Monda', sans-serif;
+  }
+
+  .list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #5f5f5f;
+    border-color: #5f5f5f;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #5795d8;
+  border-color: #3e8ce0;
+}
+.table .thead-dark th {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #454d55;
+  font-weight: normal;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgb(52, 58, 64);
+  border-color: rgba(52, 58, 64, 0.082);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(214, 214, 214, 0.548);
+}
+.form-control-sm:focus{
+  border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(39, 39, 39, 0.548);
+}
+/* CENTER DIV */
+.div-center {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #3f3f3f;
+  border-color: #3f3f3f;
+}
+.w100{
+  width: 100px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

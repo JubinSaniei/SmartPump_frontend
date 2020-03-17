@@ -1,0 +1,200 @@
+<div class="container bg-lighter pb-5 mb-5">
+  <div class="row pt-5">
+    <div class="col-sm-12 ">
+
+      <ngb-toast id="toast" *ngIf="toastShow" header="Confirmed" [autohide]="false" (click)="toastShow=false">
+        Your password successfuly changed.
+      </ngb-toast>
+
+      <table>
+        <tbody class="userInfo">
+          <tr>
+            <td>
+              <img class="rounded-pill" src="{{userInfo.picture}}" alt="" style="width:100px;">
+
+              <div class="col-sm-12 col-md-5 mt-2">
+                <div class="uploadPhoto shadow-sm " *ngIf="editStatus">
+                  <span class="arrowUp"></span>
+                  <label for="" class="font-xs text-muted pl-1">Brows</label><br>
+                  <div class="d-flex bg-white">
+                    <input class="form-control form-control-sm" type="text" name="picture" [(ngModel)]="userModel.picture">
+                    <!-- <button type="button" class="btn btn-sm btn-primary w100 ml-3">Save</button> -->
+                  </div>
+                  <!-- <span class="mdi mdi-window-close  ml-1" (click)="editStatus=false"></span> -->
+                </div>
+              </div>
+
+            </td>
+            <td class=" userFullName">
+              <p class=" text-truncate font-weight-bold">{{userInfo.firstName}} {{userInfo.lastName}}</p>
+              <p>{{userInfo.email}}</p>
+              <p *ngIf="userInfo.isActive" class=" badge badge-success font-weight-lighter float-right">Active</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td class="pt-0 topBtns">
+              <a class="btn btn-sm text-white btn-primary text-decoration-none" (click)="onClicked()" role="button">Edit</a>
+              <a class="btn btn-sm text-white btn-danger ml-2 text-decoration-none" (click)="clodePasswordMenu=true" role="button">Reset
+                Password</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="col-sm-12 col-md-5 mt-2" *ngIf="clodePasswordMenu">
+        <div class="resetPassword shadow-sm ">
+          <span class="PasswordArrowUp"></span>
+          <div class="bg-white">
+            <form (ngSubmit)="onResetPassword()" #frmPassword="ngForm">
+              <!-- <span class="font-xs text-danger" *ngIf="oldpassword.invalid">Required</span> -->
+              <input [class.is-invalid]="oldpassword.invalid" class="form-control form-control-sm mt-3" type="password" name="oldPassword"
+                placeholder="Current Password" [(ngModel)]="passwordModel.oldPassword" required #oldpassword="ngModel">
+
+              <input [class.is-invalid]="newpassword.invalid" class="form-control form-control-sm" type="password" name="newPassword"
+                placeholder="New Password" [(ngModel)]="passwordModel.newPassword" required #newpassword="ngModel">
+
+              <input [class.is-invalid]="confirmpassword.invalid" class="form-control form-control-sm" type="password"
+                name="confirmPassword" placeholder="Confirm Password" [(ngModel)]="passwordModel.confirmPassword" required
+                #confirmpassword="ngModel">
+              <button type="button" class="btn btn-sm btn-primary w100 mt-3 align-self-end" [disabled]="frmPassword.invalid"
+                (click)="onResetPassword()">Update</button>
+            </form>
+          </div>
+          <span class="mdi mdi-window-close  ml-1" (click)="onPasswordClose()"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <section *ngIf="!editStatus">
+    <!-- user data view -->
+    <div class="row mt-1">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <table class="userDetail">
+              <tr>
+                <td>First Name</td>
+                <td>{{userInfo.firstName}}</td>
+              </tr>
+              <tr>
+                <td>Last Name</td>
+                <td>{{userInfo.lastName}}</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>{{userInfo.age}}</td>
+              </tr>
+              <tr>
+                <td>Eye Color</td>
+                <td>{{userInfo.eyeColor}}</td>
+              </tr>
+              <tr>
+                <td>Company</td>
+                <td>{{userInfo.company}}</td>
+              </tr>
+              <tr>
+                <td>Phone Number</td>
+                <td>{{userInfo.phone}}</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>{{userInfo.address}}</td>
+              </tr>
+              <tr>
+                <td>Eye Color</td>
+                <td>{{userInfo.firstName}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="editStatus">
+    <!-- user data edit -->
+    <div class="row mt-1">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <form (ngSubmit)="onUpdate()" #frmUpdate="ngForm">
+              <table class="userDetail">
+                <tr>
+                  <td>First Name</td>
+
+                  <td>
+                    <span class="font-xs text-danger" *ngIf="firstName.invalid">required</span>
+                    <input class="form-control form-control-sm" type="text" name="firstName" [(ngModel)]="userModel.firstName"
+                      #firstName="ngModel" required>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Last Name</td>
+                  <td>
+                    <span class="font-xs text-danger" *ngIf="lastName.invalid">required</span>
+                    <input class="form-control form-control-sm" type="text" name="lastName" [(ngModel)]="userModel.lastName"
+                      #lastName="ngModel" required>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Age</td>
+                  <td><input class="form-control form-control-sm" type="number" name="age" [(ngModel)]="userModel.age"></td>
+                </tr>
+                <tr>
+                  <td>Eye Color</td>
+                  <td><input class="form-control form-control-sm" type="text" name="eyeColor" [(ngModel)]="userModel.eyeColor"></td>
+                </tr>
+                <tr>
+                  <td>Company</td>
+                  <td><input class="form-control form-control-sm" type="text" name="company" [(ngModel)]="userModel.company"></td>
+                </tr>
+                <tr>
+                  <td>Phone Number</td>
+                  <td><input class="form-control form-control-sm" type="number" name="phone" [(ngModel)]="userModel.phone"></td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td><input class="form-control form-control-sm" type="text" name="address" [(ngModel)]="userModel.address"></td>
+                </tr>
+              </table>
+
+              <div class="d-flex clearfix mt-3">
+                <button type="submit" class="btn btn-sm btn-primary w100" [disabled]="frmUpdate.invalid">Update</button>
+                <button class="btn btn-sm btn-secondary w100 ml-1" (click)="onFormClose()">Close</button>
+              </div>
+
+            </form>
+
+            <div class="resetPass">
+              <a class="btn btn-sm text-white font-xs btn-danger ml-2 text-decoration-none" role="button" (click)="accDeletClicked()">Delete My Account</a>
+            </div>
+
+           
+            <div *ngIf="accountDelStatus">
+              <div class="accountDelete shadow-sm ">
+                <span class="accountDeleteArrow"></span>
+                <div class="bg-white">
+                  <form (ngSubmit)="onAccountDelete()" #frmDeleteAcc="ngForm">
+                    <span class="font-xs text-danger font-weight-bold">Are you sure you want to delete you account?</span>
+                    <input [class.is-invalid]="currentPassword.invalid" class="form-control form-control-sm mt-3" type="password"
+                      name="password" placeholder="Current Password" [(ngModel)]="passwordModel.password" required
+                      #currentPassword="ngModel">
+                  
+                    <button type="button" class="btn btn-sm font-xs btn-danger w100 mt-3 align-self-end" [disabled]="frmDeleteAcc.invalid"
+                      (click)="onAccountDelete()">Delete</button>
+                  </form>
+                </div>
+                <span class="mdi mdi-window-close  ml-1" (click)="accDeletClicked()"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top mb-3">
+    <a class="navbar-brand" routerLink="dashboard"><img src="../assets/images/logo.png" alt="Logo" style="width: 100px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="dashboard" [routerLinkActive]="'active'">Dashboard <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <div ngbDropdown class="d-inline-block" placement="bottom-right" display="dynamic" id="drops">
+        <span class="font-xs text-muted text-capitalize mr-3">Welcome Back {{userStorage.storage.firstName}}</span>
+        <button class="userBtn" id="dropdownBasic1" ngbDropdownToggle><img class="rounded-circle" style="width: 32px;" src="{{userStorage.storage.picture}}"></button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-2">
+          <button ngbDropdownItem routerLink="userProfile"><i class="mdi mdi-contacts mr-3"></i>User Profile</button>
+          <div class="dropdown-divider"></div>
+          <button ngbDropdownItem (click)="logout()"><i class="mdi mdi-logout mr-3"></i>Log out</button>
+        </div>
+      </div>
+    </div>
+  </nav>
