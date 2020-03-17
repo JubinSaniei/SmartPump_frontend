@@ -33,6 +33,7 @@ const appRoutes: Routes = [
     LoginComponent,
     UserProfileComponent,
     NavbarComponent,
+    ConfirmButtonDirective
   ],
   imports: [
     BrowserModule,

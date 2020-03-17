@@ -28,12 +28,13 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router, private userStorage: StorageData, private userServices: LoginService, private EncrDecr: EncrDecrService) { }
+  constructor(private router: Router, public userStorage: StorageData, private userServices: LoginService, private EncrDecr: EncrDecrService) { }
 
   decodeModel: any = {};
   userInfo: any = {};
   userModel: any = {};
-
+  firstName = '';
+  pictureUrl = '';
 
   ngOnInit() {
     this.decodeToken();
@@ -58,7 +59,6 @@ export class NavbarComponent implements OnInit {
       // Decrypting the header response from server
       const decrypt = this.EncrDecr.getNoKey(data);
       this.userInfo = decrypt;
-
 
       // Storing user data in the temp storage
       this.userStorage.storage = this.userInfo;
