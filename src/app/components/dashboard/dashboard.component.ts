@@ -43,8 +43,9 @@ export class DashboardComponent implements OnInit {
       // Decrypting the header response from server
       const decrypt = this.EncrDecr.getNoKey(data);
       this.userModel = decrypt;
-      // merge deposit and withdraw
-      this.transactionMerge = (this.userModel.balance.deposit.concat(this.userModel.balance.withdraw));
+      // merge deposit and withdraw and remove empty value
+      this.transactionMerge = (this.userModel.balance.deposit.concat(this.userModel.balance.withdraw)).filter(x => x.value !== null);
+
 
       // Sort transactions based on date
       this.transactionMerge.sort((a, b) => (a.date < b.date) ? 1 : -1);
