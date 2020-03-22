@@ -27,6 +27,7 @@ export class UserProfileComponent implements OnInit {
   clodePasswordMenu = false;
   toastShow = false;
   accountDelStatus = false;
+  imageUploadStatus = false;
 
   ngOnInit() {
     this.userInfo = this.userStorage.storage;
@@ -76,6 +77,7 @@ export class UserProfileComponent implements OnInit {
       this.userModel = {};
       this.userData();
       this.editStatus = false;
+      this.imageUploadStatus = false;
     }, err => {
       HttpResponseMessageHandler.ErrorMsg(err);
     });
@@ -100,6 +102,9 @@ export class UserProfileComponent implements OnInit {
 
   accDeletClicked() {
     this.accountDelStatus = !this.accountDelStatus;
+  }
+  onImageClicked() {
+    this.imageUploadStatus = !this.imageUploadStatus;
   }
   onAccountDelete() {
     const model = {

@@ -49,6 +49,17 @@
   left: 30px;
 }
 
+.photoUpload{
+  position: absolute;
+  left: 45px;
+  top: 35px;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #fff;
+  padding: 0 10px;
+  border-radius: 30px;
+
+}
 .uploadPhoto {
   border: 1px solid rgba(212, 212, 212, 0.534);
   padding: 15px 15px;

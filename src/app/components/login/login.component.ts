@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
     this.loginService.register(this.registerModel).subscribe(data => {
       this.register = false;
       this.toastShow = true;
+      this.registerModel = {};
       setTimeout(() => this.toastShow = false, 5000);
 
     }, err => {
