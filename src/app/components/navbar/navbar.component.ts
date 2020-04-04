@@ -8,6 +8,7 @@ import { StorageData } from '../../shared/dataStorage';
 import { HttpResponseMessageHandler } from 'src/app/shared/httpResponse.msg.handeler';
 import { EncrDecrService } from 'src/app/shared/encrDecr';
 import { LoginService } from 'src/app/services/login.service';
+import { AppComponent } from 'src/app/app.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router, public userStorage: StorageData, private userServices: LoginService, private EncrDecr: EncrDecrService) { }
+  constructor(private router: Router, public userStorage: StorageData, private userServices: LoginService,
+    private EncrDecr: EncrDecrService, private appcom: AppComponent) { }
 
   decodeModel: any = {};
   userInfo: any = {};
@@ -38,17 +40,21 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.decodeToken();
-    if (!this.decodeModel) {
-      this.router.navigate(['/']);
-    }
+
   }
+
   decodeToken() {
     // Decoding token
     this.decodeModel = TokenDecode.getDecodedAccessToken();
+    if (this.decodeModel === null) {
+      this.router.navigate(['/']);
+      return;
+    }
     this.userData();
   }
 
   logout() {
+    this.appcom.isVisibale = false;
     window.sessionStorage.removeItem('token');
     this.router.navigate(['/']);
   }

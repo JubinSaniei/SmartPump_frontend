@@ -4,6 +4,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { HttpResponseMessageHandler } from 'src/app/shared/httpResponse.msg.handeler';
+import { AuthGaurd } from 'src/app/auth-guard.service';
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('errorMessage', { static: true }) errorMessage: ElementRef;
   @ViewChild('frmRegister', { static: true }) frmRegister: NgForm;
 
-  constructor(private router: Router, private loginService: LoginService, private http: HttpClient) { }
+  constructor(private router: Router, private loginService: LoginService, private http: HttpClient, private appcom: AppComponent) { }
 
 
   loginFrm: any = {};
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(loginModel).subscribe(data => {
 
       window.sessionStorage.setItem('token', data);
-
+      this.appcom.isVisibale = true;
       this.router.navigate(['dashboard']);
 
     }, err => {

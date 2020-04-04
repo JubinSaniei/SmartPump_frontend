@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -17,14 +16,11 @@ import { EncrDecrService } from './shared/encrDecr';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { StorageData } from './shared/dataStorage';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AppRoutingModule } from './app-routing-module';
+import { AuthGaurd } from './auth-guard.service';
 
 
-const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'userProfile', component: UserProfileComponent },
 
-];
 
 @NgModule({
   declarations: [
@@ -33,16 +29,16 @@ const appRoutes: Routes = [
     LoginComponent,
     UserProfileComponent,
     NavbarComponent,
-    ConfirmButtonDirective
+    ConfirmButtonDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     ReactiveFormsModule,
+
 
   ],
   providers: [
@@ -51,7 +47,8 @@ const appRoutes: Routes = [
     HttpResponseMessageHandler,
     ConfirmButtonDirective,
     EncrDecrService,
-    StorageData
+    StorageData,
+    AuthGaurd
 
   ],
   bootstrap: [AppComponent]
